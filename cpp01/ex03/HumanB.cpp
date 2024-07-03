@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 15:56:53 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/02 11:25:15 by seungryk         ###   ########.fr       */
+/*   Created: 2024/07/02 13:14:04 by seungryk          #+#    #+#             */
+/*   Updated: 2024/07/02 13:20:21 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-Zombie  *zombiHorde( int N, std::string name)
-{
-    int     i;
-    Zombie  *z_horde = new Zombie[N];
-    
-    for (i = 0; i < N; i++)
-    {
-        z_horde[i].set_name(name + std::to_string(i));
-        z_horde[i].announce();
-    }
-    return (z_horde);
-} 
+HumanB::HumanB(){
+}
+
+HumanB::~HumanB(){
+}
