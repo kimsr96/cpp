@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:11:33 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/02 12:40:57 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:56:03 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,11 @@ class Weapon{
     private:
         std::string _type;
     public:
-        Weapon(std::string type){
-            _type = type; 
-        }
+        Weapon(std::string type);
         Weapon();
         ~Weapon();
-        const std::string& getType() const{
-            return (_type);
-        }
-        void setType(std::string type){
-            _type = type;            
-        }   
+        const std::string& getType() const;
+        void setType(std::string type);
 };
 
 #endif

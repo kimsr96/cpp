@@ -6,7 +6,7 @@
 #    By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 13:06:15 by seungryk          #+#    #+#              #
-#    Updated: 2024/07/02 13:22:58 by seungryk         ###   ########.fr        #
+#    Updated: 2024/09/11 18:31:26 by seungryk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 INCS = HumanA.hpp HumanB.hpp Weapon.hpp 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
-NAME = violence
+NAME = ex04
 
 all : $(NAME)
 

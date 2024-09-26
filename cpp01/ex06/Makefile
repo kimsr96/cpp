@@ -6,7 +6,7 @@
 #    By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 13:06:15 by seungryk          #+#    #+#              #
-#    Updated: 2024/07/03 14:11:29 by seungryk         ###   ########.fr        #
+#    Updated: 2024/09/11 19:23:43 by seungryk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = main.cpp Harl.cpp
 INCS = Harl.hpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
-NAME = harl_filter
+NAME = harlFilter
 
 all : $(NAME)
 

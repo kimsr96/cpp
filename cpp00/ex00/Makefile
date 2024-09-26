@@ -6,16 +6,16 @@
 #    By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 13:06:15 by seungryk          #+#    #+#              #
-#    Updated: 2024/06/28 12:58:25 by seungryk         ###   ########.fr        #
+#    Updated: 2024/09/10 15:38:00 by seungryk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS = megaphone.cpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
-NAME = magaphone
+NAME = megaphone
 
 all : $(NAME)
 

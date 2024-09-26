@@ -6,19 +6,21 @@
 #    By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 13:06:15 by seungryk          #+#    #+#              #
-#    Updated: 2024/06/29 19:08:16 by seungryk         ###   ########.fr        #
+#    Updated: 2024/09/10 14:14:53 by seungryk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS = Account.cpp tests.cpp
 INC = Account.hpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 NAME = account
 
-$(NAME) : $(OBJS) $(INC)
+all : $(NAME) $(INC)
+
+$(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR) :

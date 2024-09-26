@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:42:46 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/08 18:05:38 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/14 17:04:21 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(void)
 {
     Fixed a;
     Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-    
+
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
     std::cout << a << std::endl;

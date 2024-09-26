@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:43:26 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/04 18:36:37 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:23:25 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ class Fixed{
         int                 fixedNumber;
         static const int    bits;
     public: 
-        Fixed(int iNum);
-        Fixed(float fNum);
+        Fixed(const int iNum);
+        Fixed(const float fNum);
         Fixed();
         ~Fixed();
         Fixed(const Fixed &copy);
         Fixed &operator = (const Fixed &copy);
         int     getRawBits( void ) const;
-        void    setRawBits( int const raw );
+        void    setRawBits( const int raw );
         float   toFloat( void ) const;
         int     toInt( void ) const;
 };

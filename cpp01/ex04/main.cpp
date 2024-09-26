@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 13:50:06 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/03 12:01:50 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:40:15 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     std::string s2 = argv[3];
     std::string fileName = std::string(argv[1]) + ".replace";
     outFile.open(fileName);
-    if (!outFile.is_open())
+    if (!outFile.is_open() || s1.length() == 0 || s2.length() == 0)
     {
         inFile.close();
         return (1);

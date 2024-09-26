@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:43:26 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/08 16:59:05 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/13 19:25:18 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Fixed{
         Fixed(const Fixed &copy);
         Fixed &operator = (const Fixed &copy);
         int     getRawBits( void ) const;
-        void    setRawBits( int const raw );
+        void    setRawBits( const int raw );
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:09:52 by seungryk          #+#    #+#             */
-/*   Updated: 2024/06/26 14:23:49 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/09 20:00:32 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ int main(int argc, char **argv) {
         j++;
       }
       std::cout << argv[i];
-      if (argv[i + 1])
-        std::cout << " ";
-      else
-        std::cout << std::endl;
       i++;
     }
+    std::cout << std::endl;
   }
 }

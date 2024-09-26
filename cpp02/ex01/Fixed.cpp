@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:04:43 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/04 18:59:53 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:36:12 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,17 @@ Fixed::Fixed() : fixedNumber(0){
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(int iNum) : fixedNumber(iNum << bits){
+Fixed::Fixed(const int iNum) : fixedNumber(iNum << bits){
     std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(float fNum) : fixedNumber(roundf(fNum * (1 << bits))){
+Fixed::Fixed(const float fNum) : fixedNumber(roundf(fNum * (1 << bits))){
     std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed(){
     std::cout << "Destructor called" << std::endl;
 }
-
-Fixed::Fixed(const Fixed &copy) : fixedNumber(copy.fixedNumber){
-        std::cout << "Copy constructor called" << std::endl;
-};
 
 Fixed &Fixed::operator = (const Fixed &copy){
     if (this != &copy)
@@ -50,8 +46,14 @@ Fixed &Fixed::operator = (const Fixed &copy){
     return (*this);
 };
 
+Fixed::Fixed(const Fixed &copy){
+    std::cout << "Copy constructor called" << std::endl;
+    *this = copy;
+};
+
+
 float   Fixed::toFloat( void ) const{
-    return static_cast<float>(fixedNumber) / (1 << bits);
+    return stati_cast<float>(fixedNumber) /c (1 << bits);
 }
 
 int     Fixed::toInt( void ) const{

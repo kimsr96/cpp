@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:28:42 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/03 14:09:47 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:17:13 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@ Harl::Harl(){
 }
 
 Harl::~Harl(){
-}
-
-int    hash( std::string &level)
-{
-    unsigned long hash = 5381;
-
-    for (size_t i = 0; i < level.length(); i++)
-        hash = hash * 33 + level[i];
-    return (hash);
 }
 
 void    Harl::debug(void)
@@ -52,29 +43,23 @@ void    Harl::error(void)
 
 void    Harl::complain( std::string level )
 {
-    int idx;
+    void    (Harl::*f[4])(void);
+    int     idx;
+    
+    f[0] = &Harl::debug;
+    f[1] = &Harl::info;
+    f[2] = &Harl::warning;
+    f[3] = &Harl::error;
     
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     for (idx = 0; idx < 4; idx++)
     {
         if (levels[idx] == level)
-            break ;        
+        {
+            (this->*f[idx])();
+            return ;
+        }
     }
-    switch (idx)
-    {
-        case 0:
-            debug();
-            break ;
-        case 1:
-            info();
-            break ;
-        case 2:
-            warning();
-            break ;
-        case 3:
-            error();
-            break ;
-        default :
-            break ;
-    }
+    std::cout << "not matched" << std::endl;
+    return ;
 }

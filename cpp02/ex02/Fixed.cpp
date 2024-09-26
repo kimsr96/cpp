@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:04:43 by seungryk          #+#    #+#             */
-/*   Updated: 2024/07/08 18:05:39 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/14 17:03:24 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void    Fixed::setRawBits( int const raw ){
 Fixed::Fixed() : fixedNumber(0){
 }
 
-Fixed::Fixed(int iNum) : fixedNumber(iNum << bits){
+Fixed::Fixed(const int iNum) : fixedNumber(iNum << bits){
 }
 
-Fixed::Fixed(float fNum) : fixedNumber(roundf(fNum * (1 << bits))){
+Fixed::Fixed(const float fNum) : fixedNumber(roundf(fNum * (1 << bits))){
 }
 
 Fixed::~Fixed(){
