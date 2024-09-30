@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 13:18:19 by seungryk          #+#    #+#             */
-/*   Updated: 2024/09/28 17:35:43 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:49:08 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ class ClapTrap
         virtual ~ClapTrap();
         ClapTrap(const ClapTrap &copy);
         ClapTrap &operator=(const ClapTrap &copy);
-        void            takeDamage(unsigned int amount);
-        void            beRepaired(unsigned int amount);
-        virtual void    attack(const std::string &target);
+        void        attack(const std::string &target);
+        void        takeDamage(unsigned int amount);
+        void        beRepaired(unsigned int amount);
 };
 
 #endif

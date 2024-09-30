@@ -6,24 +6,21 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:42:46 by seungryk          #+#    #+#             */
-/*   Updated: 2024/09/28 15:12:34 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/09/28 20:18:08 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-    ScavTrap a("a");
-    ScavTrap b("b");
-
-    for (int i = 0; i < 50; i++)
-    {
-        a.attack("b");
-        b.takeDamage(20);
-    }
-    a.attack("b");
-    b.guardGate();
+    DiamondTrap d("diamond");
+    
+    d.attack("clap");
+    d.whoAmI();
+    d.printHitPoint();
     return 0;
 }
