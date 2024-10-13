@@ -11,6 +11,7 @@ Cat::~Cat(){
 }
 
 Cat::Cat(const Cat &copy): Animal(copy){
+    catBrain = new Brain(*copy.catBrain);
 }
 
 Cat& Cat::operator=(const Cat& copy){
@@ -18,10 +19,8 @@ Cat& Cat::operator=(const Cat& copy){
     {
         type = copy.type;
         if (catBrain)
-        {
             delete catBrain;
-            catBrain = new Brain(*copy.catBrain);
-        }
+        catBrain = new Brain(*copy.catBrain);
     }
     return *this;
 }

@@ -2,6 +2,7 @@
 # define LIST_HPP
 
 #include "AMateria.hpp"
+#include <iostream>
 
 struct g_delete_list{
     AMateria        *member;

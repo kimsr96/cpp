@@ -21,6 +21,6 @@ void Animal::makeSound(void) const{
     std::cout << "Animal making sound" << std::endl;
 }
 
-std::string Animal::getType(void) const{
+const std::string& Animal::getType(void) const{
     return type;
 }

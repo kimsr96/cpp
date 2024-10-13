@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
@@ -24,5 +26,14 @@ int main(void)
     i->makeSound(); //will output the cat sound!
     j->makeSound();
     meta->makeSound();
+
+    WrongAnimal* wc = new WrongCat();
+    wc->makeSound();
+
+    delete wc;
+    delete meta;
+    delete j;
+    delete i;
+
     return 0;
 }

@@ -11,11 +11,17 @@ Dog::~Dog(){
 }
 
 Dog::Dog(const Dog &copy): Animal(copy){
+    dogBrain = new Brain(*copy.dogBrain);
 }
 
 Dog& Dog::operator=(const Dog& copy){
     if (this != &copy)
+    {
         type = copy.type;
+        if (dogBrain)
+            delete dogBrain;
+        dogBrain = new Brain(*copy.dogBrain);
+    }
     return *this;
 }
 

@@ -27,6 +27,7 @@ void delete_node(void){
     {
         temp = g_head;
         g_head = g_head->next;
+        std::cout << temp->member->getType() << " deleted" << std::endl;
         delete temp->member;
         delete temp;
     }

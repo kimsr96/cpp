@@ -14,11 +14,11 @@ AMateria::AMateria(const AMateria &copy) : _type(copy._type){
 
 AMateria& AMateria::operator=(const AMateria& copy){
     if (this != &copy)
-        _type = copy._type;
+        _type = copy.getType();
     return *this;
 }
 
-std::string const & AMateria::getType() const{
+const std::string& AMateria::getType() const{
     return (_type);
 }
 

@@ -6,7 +6,7 @@
 /*   By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:42:46 by seungryk          #+#    #+#             */
-/*   Updated: 2024/10/08 17:03:40 by seungryk         ###   ########.fr       */
+/*   Updated: 2024/10/13 14:06:29 by seungryk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include "Dog.hpp"
 #include <stdlib.h>
 
-void    check_leaks(void)
-{
-    system("leaks a.out");
-}
+//void    check_leaks(void)
+//{
+//    system("leaks a.out");
+//}
 
 int main() 
 {

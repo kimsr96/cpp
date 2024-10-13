@@ -1,7 +1,7 @@
 #include "Character.hpp"
 #include "List.hpp"
 
-Character::Character(){
+Character::Character() : _idx(0), _name("default"){
     for (int i = 0; i < 4; i++)
         _mList[i] = NULL;
 }
@@ -20,17 +20,26 @@ Character::~Character(){
 }
 
 Character::Character(const Character &copy) : _idx(copy._idx),  _name(copy._name){
+    for (int i = 0; i < 4; i++)
+        _mList[i] = copy._mList[i];
 }
 
 Character& Character::operator=(const Character& copy){
     if (this != &copy){
         _name = copy._name;
         _idx = copy._idx;
+        for (int i = 0; i < 4; i++)
+        {
+            if (copy._mList[i])
+                _mList[i] = copy._mList[i]->clone();
+            else
+                _mList[i] = NULL;
+        }
     }
     return *this;
 }
 
-std::string const & Character::getName() const{
+const std::string& Character::getName() const{
     return _name;
 }
 
@@ -39,13 +48,15 @@ void    Character::equip(AMateria* m){
         return ;
     if (_idx >= 4)
     {
-        std::cout << "4 slots are full" << std::endl;
+        std::cout << "4 slots are full in Character" << std::endl;
+        delete m;
         return ;
     }
     for (int i = 0; i < 4; i++)
     {
         if (_mList[i] == NULL)
         {
+            std::cout << i << "'s equiped " << m->getType() << std::endl;
             _mList[i] = m;
             _idx++;
             return ;
@@ -72,7 +83,7 @@ void    Character::unequip(int idx){
 void    Character::use(int idx, ICharacter& target){
     if (idx < 0 || idx >= 4)
     {
-        std::cout << idx << "not suitable" << std::endl;
+        std::cout << idx << " skill is not exist" << std::endl;
         return ;
     }
     if (_mList[idx])

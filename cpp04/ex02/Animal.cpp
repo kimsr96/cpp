@@ -17,6 +17,6 @@ Animal& Animal::operator=(const Animal& copy){
     return *this;
 }
 
-std::string Animal::getType(void) const{
+const std::string& Animal::getType(void) const{
     return type;
 }

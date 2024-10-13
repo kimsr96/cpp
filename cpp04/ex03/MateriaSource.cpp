@@ -45,7 +45,8 @@ void MateriaSource::learnMateria(AMateria *skill){
         return ;
     if (_idx >= 4)
     {
-        std::cout << "4 slots are full" << std::endl;
+        std::cout << "4 slots are full in Inventory" << std::endl;
+        delete skill;
         return ;
     }
     for (int i = 0; i < 4; i++)
@@ -62,10 +63,10 @@ void MateriaSource::learnMateria(AMateria *skill){
 AMateria*   MateriaSource::createMateria(std::string const & type){
     for (int i = 0; i < 4; i++)
     {
-        if (type == slots[i]->getType() && type == "ice")
-            return (new Ice());
-        else if (type == slots[i]->getType() && type == "cure")
-            return (new Cure());
+        if (slots[i] == NULL)
+            continue ;
+        if (type == slots[i]->getType())
+            return slots[i]->clone();
     }
     return (0);
 }

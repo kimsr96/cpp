@@ -12,8 +12,8 @@
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp
-INCS = Animal.hpp Cat.hpp Dog.hpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp
+INCS = Animal.hpp Cat.hpp Dog.hpp WrongCat.hpp WrongAnimal.hpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 NAME = a.out

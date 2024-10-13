@@ -6,14 +6,14 @@
 #    By: seungryk <seungryk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 13:06:15 by seungryk          #+#    #+#              #
-#    Updated: 2024/10/12 18:16:42 by seungryk         ###   ########.fr        #
+#    Updated: 2024/10/13 18:17:13 by seungryk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp List.cpp
-INCS = AMateria.hpp Cure.hpp Ice.hpp ICharacter.hpp Character.hpp IMateriaSource.hpp MateriaSource.hpp List.hpp
+SRCS = main.cpp Bureaucrat.cpp
+INCS = Bureaucrat.hpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 NAME = a.out
