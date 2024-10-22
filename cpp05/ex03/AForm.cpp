@@ -1,46 +1,46 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form() : name("default"), isSigned(false), signGrade(42), executeGrade(42){
+AForm::AForm() : name("default"), isSigned(false), signGrade(42), executeGrade(42){
 }
 
-Form::Form(std::string inputName, bool sign, const int inputSignGrade, const int inputExecuteGrade)
+AForm::AForm(std::string inputName, bool sign, const int inputSignGrade, const int inputExecuteGrade)
     : name(inputName), isSigned(sign), signGrade(inputSignGrade), executeGrade(inputExecuteGrade){
     }
 
-Form::~Form(){
+AForm::~AForm(){
 }
 
-Form::Form(const Form &copy) : name(copy.name), isSigned(copy.isSigned), signGrade(copy.signGrade), executeGrade(copy.executeGrade){
+AForm::AForm(const AForm &copy) : name(copy.name), isSigned(copy.isSigned), signGrade(copy.signGrade), executeGrade(copy.executeGrade){
 }
 
-Form& Form::operator=(const Form& copy){
+AForm& AForm::operator=(const AForm& copy){
     if (this != &copy){
         isSigned = copy.isSigned;
     }
     return *this;
 }
 
-const std::string& Form::getName() const{
+const std::string& AForm::getName() const{
     return name;    
 }
 
-bool Form::getSignStatus() const{
+bool AForm::getSignStatus() const{
     return isSigned;
 }
 
-int Form::getSignGrade() const{
+int AForm::getSignGrade() const{
     return signGrade;
 }
 
-int Form::getExecuteGrade() const{
+int AForm::getExecuteGrade() const{
     return executeGrade;
 }
 
-void    Form::setSignTrue(){
+void    AForm::setSignTrue(){
     isSigned = true;
 }
 
-void    Form::beSigned(Bureaucrat &b){
+void    AForm::beSigned(Bureaucrat &b){
     if (b.getGrade() <= getSignGrade())
     {
         std::cout << b.getName() << " signed " << getName() << std::endl;
@@ -50,17 +50,17 @@ void    Form::beSigned(Bureaucrat &b){
         throw GradeTooLowException();
 }
 
-const char* Form::GradeTooHighException::what() const throw(){
+const char* AForm::GradeTooHighException::what() const throw(){
     return "Grade Too High!!";
 }
 
-const char* Form::GradeTooLowException::what() const throw(){
+const char* AForm::GradeTooLowException::what() const throw(){
     return "Grade Too Low!!";
 }
 
-std::ostream &operator<<(std::ostream &out, const Form &target) {
-    out << "==========FORM INFO==========" << std::endl;
-    out << "Form name is " << target.getName() << std::endl;
+std::ostream &operator<<(std::ostream &out, const AForm &target) {
+    out << "==========AForm INFO==========" << std::endl;
+    out << "AForm name is " << target.getName() << std::endl;
     if (target.getSignStatus())
         out << target.getName() << "is not signed" << std::endl;
     else

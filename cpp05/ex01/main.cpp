@@ -14,7 +14,7 @@ int main(void){
     }
     catch (std::exception & e){
         std::cerr << e.what() << std::endl;
-    }
+    }   
 
     std::cout << f << std::endl;
     return 0;
