@@ -4,6 +4,10 @@ Bureaucrat::Bureaucrat() : name("default"), grade(42){
 }
 
 Bureaucrat::Bureaucrat(std::string input_name, int input_grade) : name(input_name), grade(input_grade){
+    if (input_grade < 1)
+        throw GradeTooHighException();
+    else if (input_grade > 150)
+        throw GradeTooLowException();
 }
 
 Bureaucrat::~Bureaucrat(){
@@ -45,10 +49,12 @@ void    Bureaucrat::decrementGrade(){
 }
 
 void    Bureaucrat::signForm(Form &form){
-    if (getGrade() <= form.getSignGrade())
+    try{
         form.beSigned(*this);
-    else
-        std::cout << getName() << " couldn't sign " << form.getName() << " because grade is low than form." << std::endl;
+    }
+    catch (std::exception &e){
+        std::cerr << e.what() << std::endl;
+    }
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw(){
@@ -57,6 +63,10 @@ const char* Bureaucrat::GradeTooHighException::what() const throw(){
 
 const char* Bureaucrat::GradeTooLowException::what() const throw(){
     return "Grade Too Low!!";
+}
+
+const char* Bureaucrat::SignException::what() const throw(){
+    return "Sign not possible";
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &target) {

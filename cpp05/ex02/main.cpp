@@ -13,47 +13,41 @@ int main(void){
     PresidentialPardonForm  p("p_form");
     RobotomyRequestForm     r("r_form");
 
+    a.signForm(s);
+    a.signForm(p);
+    a.signForm(r);
     //Error Case
-    b.executeForm(s);
-    b.executeForm(p);
-    b.executeForm(r);
+
+    //Try to unsigned form
     try{
-        s.execute(a);
+        b.executeForm(s);
     }
-    catch (std::exception & e){
+    catch (std::exception &e){
         std::cerr << e.what() << std::endl;
     }
 
     try{
-        p.execute(a);
+        b.executeForm(p);
     }
-    catch (std::exception & e){
+    catch (std::exception &e){
         std::cerr << e.what() << std::endl;
     }
 
     try{
-        r.execute(a);
+        b.executeForm(r);
     }
-    catch (std::exception & e){
+    catch (std::exception &e){
         std::cerr << e.what() << std::endl;
     }
 
     //Success Case
-    std::cout <<  std::endl << std::endl;
+    std::cout <<  std::endl;
     
-    a.signForm(s);
-    a.signForm(p);
-    a.signForm(r);
-
-    a.executeForm(s);
-    a.executeForm(p);
-    a.executeForm(r);
-
     try{
-        s.execute(a);
-        p.execute(a);
+        a.executeForm(s);
+        a.executeForm(p);
         for (int i = 0; i < 5; i++){
-            r.execute(a);
+            a.executeForm(r);
         }
     }
     catch (std::exception & e){

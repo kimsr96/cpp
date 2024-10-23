@@ -1,11 +1,13 @@
 #include "Form.hpp"
 
-Form::Form() : name("default"), isSigned(false), signGrade(42), executeGrade(42){
+Form::Form() : name("default"), signGrade(42), executeGrade(42){
+    isSigned = false;
 }
 
-Form::Form(std::string inputName, bool sign, const int inputSignGrade, const int inputExecuteGrade)
-    : name(inputName), isSigned(sign), signGrade(inputSignGrade), executeGrade(inputExecuteGrade){
-    }
+Form::Form(std::string inputName, const int inputSignGrade, const int inputExecuteGrade)
+    : name(inputName), signGrade(inputSignGrade), executeGrade(inputExecuteGrade){
+        isSigned = false;
+}
 
 Form::~Form(){
 }
@@ -62,7 +64,7 @@ std::ostream &operator<<(std::ostream &out, const Form &target) {
     out << "==========FORM INFO==========" << std::endl;
     out << "Form name is " << target.getName() << std::endl;
     if (target.getSignStatus())
-        out << target.getName() << "is not signed" << std::endl;
+        out << target.getName() << " is not signed" << std::endl;
     else
         out << target.getName() << " is signed" << std::endl;
     out << "Sign Grade is " << target.getSignGrade() << std::endl;

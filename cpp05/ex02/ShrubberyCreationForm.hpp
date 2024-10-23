@@ -13,8 +13,12 @@ class ShrubberyCreationForm : public AForm{
         ShrubberyCreationForm(const ShrubberyCreationForm &copy);
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &copy);
 
-        const std::string&      getTarget();
-        void                    execute(Bureaucrat const & executor);
+        const std::string&      getTarget() const;
+        void                    execute(Bureaucrat const & executor) const;
+    class FileOpenException: public std::exception{
+        public:
+            const char* what() const throw();
+    };
 };
 
 #endif

@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string targetName) : AForm(targetName, false, 72, 45), target(targetName){
+RobotomyRequestForm::RobotomyRequestForm(std::string targetName) : AForm(targetName, 72, 45), target(targetName){
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){
@@ -16,12 +16,12 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& c
     return *this;
 } 
 
-const std::string& RobotomyRequestForm::getTarget(){
+const std::string& RobotomyRequestForm::getTarget() const{
     return target;
 }
 
 
-void    RobotomyRequestForm::execute(Bureaucrat const & executor){
+void    RobotomyRequestForm::execute(Bureaucrat const & executor) const{
     if (this->getSignStatus() && this->getExecuteGrade() >= executor.getGrade())
     {
         if (std::rand() % 2 == 0)
@@ -29,7 +29,8 @@ void    RobotomyRequestForm::execute(Bureaucrat const & executor){
         else
             std::cout << "Robotomy failed" << std::endl;
     }
-    else {
+    else if (this->getSignStatus() == false)
+        throw SignException();
+    else
         throw GradeTooLowException();
-    }
 }

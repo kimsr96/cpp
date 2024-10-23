@@ -3,8 +3,21 @@
 int main(void){
     Bureaucrat a("a", 1);
     Bureaucrat b("b", 150);
-    Bureaucrat c;
     
+    try{
+        Bureaucrat c("c", -1);
+    }
+    catch (std::exception &e){
+        std::cerr << e.what() << std::endl;
+    }
+
+    try{
+        Bureaucrat c("c", 151);
+    }
+    catch (std::exception &e){
+        std::cerr << e.what() << std::endl;
+    }
+
     try{
         a.incrementGrade();
     }
@@ -21,5 +34,4 @@ int main(void){
 
     std::cout << a << std::endl;
     std::cout << b << std::endl;
-    std::cout << c << std::endl;
 }

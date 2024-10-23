@@ -1,11 +1,13 @@
 #include "AForm.hpp"
 
-AForm::AForm() : name("default"), isSigned(false), signGrade(42), executeGrade(42){
+AForm::AForm() : name("default"), signGrade(42), executeGrade(42){
+    isSigned = false;
 }
 
-AForm::AForm(std::string inputName, bool sign, const int inputSignGrade, const int inputExecuteGrade)
-    : name(inputName), isSigned(sign), signGrade(inputSignGrade), executeGrade(inputExecuteGrade){
-    }
+AForm::AForm(std::string inputName, const int inputSignGrade, const int inputExecuteGrade)
+    : name(inputName), signGrade(inputSignGrade), executeGrade(inputExecuteGrade){
+    isSigned = false;
+}
 
 AForm::~AForm(){
 }
@@ -56,6 +58,10 @@ const char* AForm::GradeTooHighException::what() const throw(){
 
 const char* AForm::GradeTooLowException::what() const throw(){
     return "Grade Too Low!!";
+}
+
+const char* AForm::SignException::what() const throw(){
+    return "Not signed!!";
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &target) {

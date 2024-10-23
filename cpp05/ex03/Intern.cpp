@@ -45,6 +45,10 @@ AForm* Intern::makeForm(const std::string& name, const std::string& target){
             return formFunc[i](target);
         }
     }
-    std::cerr << "Form name error" << std::endl;
+    throw FormNameException();
     return NULL;
+}
+
+const char* Intern::FormNameException::what() const throw(){
+    return "FormName Error";
 }

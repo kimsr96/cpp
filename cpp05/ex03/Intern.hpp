@@ -14,6 +14,10 @@ class Intern{
         Intern &operator=(const Intern &copy);
 
         AForm* makeForm(const std::string& name, const std::string& target);
+        class FormNameException : public std::exception{
+            public:
+                const char* what() const throw();
+        };
 };
 
 #endif

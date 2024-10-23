@@ -4,6 +4,10 @@ Bureaucrat::Bureaucrat() : name("default"), grade(42){
 }
 
 Bureaucrat::Bureaucrat(std::string input_name, int input_grade) : name(input_name), grade(input_grade){
+    if (input_grade < 1)
+        throw GradeTooHighException();
+    else if (input_grade > 150)
+        throw GradeTooLowException();
 }
 
 Bureaucrat::~Bureaucrat(){

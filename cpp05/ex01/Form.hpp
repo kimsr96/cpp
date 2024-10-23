@@ -14,7 +14,7 @@ class Form{
         const int           executeGrade;
     public:
         Form();
-        Form(std::string inputName, bool sign, const int inputSignGrade, const int inputExecuteGrade);
+        Form(std::string inputName, const int inputSignGrade, const int inputExecuteGrade);
         ~Form();
         Form(const Form &copy);
         Form &operator=(const Form &copy);

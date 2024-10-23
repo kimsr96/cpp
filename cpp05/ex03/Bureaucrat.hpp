@@ -32,6 +32,14 @@ class Bureaucrat{
         public:
             const char* what() const throw();
     };
+    class SignException : public std::exception{
+        public:
+            const char* what() const throw();
+    };
+    class ExecuteException : public std::exception{
+        public:
+            const char* what() const throw();
+    };
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &target);

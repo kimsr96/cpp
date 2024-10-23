@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string targetName) : AForm(targetName, false, 145, 137), target(targetName){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string targetName) : AForm(targetName, 145, 137), target(targetName){
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){
@@ -16,11 +16,11 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 } 
 
-const std::string& ShrubberyCreationForm::getTarget(){
+const std::string& ShrubberyCreationForm::getTarget() const{
     return target;
 }
 
-void    ShrubberyCreationForm::execute(Bureaucrat const & executor){
+void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
     if (this->getSignStatus() && this->getExecuteGrade() >= executor.getGrade())
     {
         std::cout << "Creating file " << this->getTarget() << "_shruberry" << std::endl;
@@ -58,7 +58,8 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor){
         outFile << "                      ;%@@@@%%:;;;. " << std::endl;
         outFile << "                  ...;%@@@@@%%:;;;;,..   " << std::endl;
     }
-    else {
+    else if (this->getSignStatus() == false)
+        throw SignException();
+    else
         throw GradeTooLowException();
-    }
 }

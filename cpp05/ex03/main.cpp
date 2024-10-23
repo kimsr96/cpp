@@ -14,8 +14,12 @@ int main(void){
     rrf = seungryk.makeForm("presidential", "Bender");
 
     //Error case
-    rrf = seungryk.makeForm("abc", "Bender");
-
+    try{
+        rrf = seungryk.makeForm("abc", "Bender");
+    }
+    catch (std::exception &e){
+        std::cerr << e.what() << std::endl;
+    }
 
     return 0;
 }
