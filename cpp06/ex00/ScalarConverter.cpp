@@ -1,7 +1,4 @@
 #include "ScalarConverter.hpp"
-#include <sstream>
-#include <cctype>
-#include <string>
 
 bool    isInf(const std::string& input){
     if (input == "inf" || input == "-inf" || input == "inff" || input == "-inff")
@@ -25,23 +22,24 @@ std::string get_type(const std::string& input){
         else
             result = "double";
     }
-    else if (atoi(input.c_str()))
+    else if (atoi(input.c_str()) || input == "0")
         result = "int";
     else
         result = "error";
-    std::cout << result << std::endl;
     return result;
 }
 
-bool isValid(const std::string& input){
+bool isValid(const std::string& input, const std::string& type){
     int dot;
     int f;
 
     dot = 0;
     f = 0;
-    if (isInf(input))
+    if (isInf(input) || type == "char" || input == "nan")
         return true;
     for (size_t i  = 0; i < input.size(); ++i){
+        if (i == 0 && input[i] == '-')
+            continue;
         if (!isdigit(input[i]) && input[i] != '.' && input[i] != 'f')
             return false;
         else if (input[i] == '.')
@@ -70,14 +68,10 @@ void ScalarConverter::convert(std::string input){
     i = 0;
     d = 0;
     f = 0;
-    //if (input == "inff")
-    //    input = "inf";
-    //else if (input == "-inff")
-    //    input = "-inf";
 
     std::string type = get_type(input);
 
-    if (isValid(input) == false || type == "error"){
+    if (isValid(input, type) == false || type == "error"){
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: impossible" << std::endl;
@@ -93,7 +87,6 @@ void ScalarConverter::convert(std::string input){
         }
         input = ret;
     }
-    //std::cout << input << std::endl;
     std::stringstream ss(input);
 
     if (type == "char")

@@ -1,8 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <limits>
-#include <cstdlib>
-#include <cstring>
 #include "ScalarConverter.hpp"
 
 int main(int argc, char **argv){
