@@ -113,7 +113,7 @@ void ScalarConverter::convert(std::string input){
     else
         std::cout << "error" << std::endl;
 
-    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))    
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')|| (c >= 33 &&  c <= 126))    
         std::cout << "char: '" << c << "'" << std::endl;
     else
     {

@@ -8,7 +8,6 @@ Base::~Base(){
 }
 
 Base * generate(void){
-    std::srand(std::time(0));
     int i = std::rand() % 3;
     if (i == 0)
         return new A();
@@ -37,17 +36,17 @@ void    identify(Base& p){
         A& aRef = dynamic_cast<A&>(p);
         (void)aRef;
         std::cout << "Base is A" << std::endl;
-    } catch (const std::bad_cast& e){
+    } catch (const std::exception & e){
         try{
             B& bRef = dynamic_cast<B&>(p);
             (void)bRef;
             std::cout << "Base is B" << std::endl;
-        } catch (const std::bad_cast& e){
+        } catch (const std::exception & e){
             try{
                 C& cRef = dynamic_cast<C&>(p);
                 (void)cRef;
                 std::cout << "Base is C" << std::endl;
-            }catch (const std::bad_cast& e){
+            }catch (const std::exception & e){
                 std::cout << "Base is not matched" << std::endl;
             }
         }
