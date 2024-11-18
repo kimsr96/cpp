@@ -8,8 +8,8 @@
 
 class Span{
     private:
-        unsigned int                        _N;
-        std::vector<unsigned int>           vec;
+        unsigned int            _N;
+        std::vector<long long>  vec;
     public:
         Span();
         Span(unsigned int N);
@@ -18,13 +18,13 @@ class Span{
         Span &operator=(const Span &copy);
 
         unsigned int    getN();
-        void            addNumber(unsigned int N);
-        void            addNumber(std::vector<unsigned int>::iterator begin, std::vector<unsigned int>::iterator end);
-        void            addManyNumbers(unsigned int num);
-        unsigned int    shortestSpan();
-        unsigned int    longestSpan();
-    
-    class OutOfIndex : public std::exception{
+        void            addNumber(long long num);
+        void            addNumber(std::vector<long long>::iterator begin, std::vector<long long>::iterator end);
+        void            addManyNumbers(long long num);
+        long long       shortestSpan();
+        long long       longestSpan();
+
+       class OutOfIndex : public std::exception{
         public:
             const char* what() const throw(); 
     };

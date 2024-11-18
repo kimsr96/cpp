@@ -20,20 +20,20 @@ unsigned int Span::getN(){
     return _N;
 }
 
-void Span::addNumber(unsigned int num){
+void Span::addNumber(long long num){
     if (vec.size() >= _N)
         throw OutOfIndex();
     vec.push_back(num);
 }
 
-void Span::addNumber(std::vector<unsigned int>::iterator begin, std::vector<unsigned int>::iterator end){
+void Span::addNumber(std::vector<long long>::iterator begin, std::vector<long long>::iterator end){
     while (begin != end){
         addNumber(*begin);
         begin++;
     }
 }
 
-void    Span::addManyNumbers(unsigned int num){
+void    Span::addManyNumbers(long long num){
     if (vec.size() + num > _N)
         throw OutOfIndex();
     for (unsigned int i = 0; i < num; i++){
@@ -41,12 +41,12 @@ void    Span::addManyNumbers(unsigned int num){
     }
 }
 
-unsigned int    Span::shortestSpan(){
+long long   Span::shortestSpan(){
     if (vec.size() > 1 ){
         unsigned int min_span = UINT_MAX;
         unsigned int span;
-        for (std::vector<unsigned int>::iterator it = vec.begin(); it != vec.end() - 1; ++it){
-            for (std::vector<unsigned int>::iterator it2  = it + 1; it2 != vec.end(); ++it2){
+        for (std::vector<long long>::iterator it = vec.begin(); it != vec.end() - 1; ++it){
+            for (std::vector<long long>::iterator it2  = it + 1; it2 != vec.end(); ++it2){
                 span = (*it2 > *it) ? *it2 - *it : *it - *it2;
                 if (span < min_span)
                     min_span = span;
@@ -59,9 +59,9 @@ unsigned int    Span::shortestSpan(){
         throw NotEnoughElement();
 }
 
-unsigned int    Span::longestSpan(){
+long long   Span::longestSpan(){
     if (vec.size() > 1){
-        std::vector<unsigned int>   sorted_vec = vec;
+        std::vector<long long>   sorted_vec = vec;
         std::sort(sorted_vec.begin(), sorted_vec.end());
         std::cout << "Longest Span: ";
         return sorted_vec.back() - sorted_vec.front();

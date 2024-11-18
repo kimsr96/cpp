@@ -5,6 +5,7 @@ int main()
 {
     srand(time(0));
 
+    std::cout << "SP" << std::endl;
     Span sp = Span(1);
     try{
         sp.addNumber(6); 
@@ -13,7 +14,9 @@ int main()
     catch(std::exception &e){
         std::cerr << e.what() << std::endl;
     }
-    
+    std::cout << std::endl;
+
+    std::cout << "SP1" << std::endl;
     Span sp1 = Span(1);
     try{
         sp1.addNumber(6);
@@ -22,19 +25,25 @@ int main()
     catch(std::exception &e){
         std::cerr << e.what() << std::endl;
     }
+    std::cout << std::endl;
 
     Span sp2 = Span(5);
+    std::cout << "SP2" << std::endl;
     try{
-        sp.addNumber(6); 
-        sp.addNumber(3); 
-        sp.addNumber(-1); 
-        sp.addNumber(9); 
-        sp.addNumber(11);
+        sp2.addNumber(6); 
+        sp2.addNumber(3); 
+        sp2.addNumber(-1);
+        sp2.addNumber(9); 
+        sp2.addNumber(12);
+        std::cout << sp2.shortestSpan() << std::endl; 
+        std::cout << sp2.longestSpan() << std::endl;
     }
     catch(std::exception &e){
         std::cerr << e.what() << std::endl;
     }
+    std::cout << std::endl;
 
+    std::cout << "SP3" << std::endl;
     Span sp3 = Span(5);
     try{
         sp3.addNumber(6); 
@@ -49,15 +58,18 @@ int main()
         std::cerr << e.what() << std::endl;
     }
 
+    std::cout << "SP4" << std::endl;
     Span sp4 = Span(1000);
     sp4.addManyNumbers(1000);
 
     std::cout << sp4.shortestSpan() << std::endl; 
     std::cout << sp4.longestSpan() << std::endl;
-    
+    std::cout << std::endl;
+
+
     Span sp5(10);
-    std::vector<unsigned int> random_number(11);
-    std::vector<unsigned int>::iterator it;
+    std::vector<long long> random_number(11);
+    std::vector<long long>::iterator it;
     for (it = random_number.begin(); it != random_number.end(); it++){
         *it = rand() % sp5.getN();
         std::cout << *it << " ";

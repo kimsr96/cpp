@@ -2,6 +2,7 @@
 # define EASYFIND_HPP
 
 #include <iostream>
+#include <algorithm>
 
 class FindError : public std::exception{
     public:
@@ -12,13 +13,13 @@ class FindError : public std::exception{
 
 template <typename T>
 void easyfind(T container, int i){
-   for (typename T::iterator it = container.begin(); it != container.end(); ++it){
-      if (*it == i){
-         std::cout << "find: " << *it << std::endl;
-         return ;
-      }
-   }
-   throw FindError();
+   typename T::iterator it;
+
+   it = find(container.begin(), container.end(), i);
+   if (it == container.end())
+      throw FindError();
+   else
+      std::cout << "Find:" << *it << std::endl;
 }
 
 #endif
