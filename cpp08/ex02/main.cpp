@@ -35,14 +35,19 @@ int main()
 
     MutantStack<int>::iterator it = mstack.begin(); 
     MutantStack<int>::iterator ite = mstack.end();
-    
+    MutantStack<int>::r_iterator rit = mstack.rbegin(); 
+    MutantStack<int>::r_iterator rite = mstack.rend();
     ++it;
     --it;
     while (it != ite) {
         std::cout << "\033[31m" << *it << std::endl;
         ++it; 
     }
-    
+    std::cout << "=== Reverse ===" << std::endl;
+    while (rit != rite){
+        std::cout << "\033[31m" << *rit << std::endl;
+        ++rit; 
+    }
     std::cout << std::endl;
 
     for (std::list<int>::iterator itl = myList.begin(); itl != myList.end(); ++itl){
@@ -50,5 +55,7 @@ int main()
     }
 
     std::stack<int> s(mstack);
+
+
     return 0;
 }

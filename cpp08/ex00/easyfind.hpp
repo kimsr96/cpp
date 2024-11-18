@@ -3,21 +3,22 @@
 
 #include <iostream>
 
-template <typename T>
-class EasyFind{
-    private:
-        EasyFind();
-        ~EasyFind();
-        EasyFind(const EasyFind &copy);
-        EasyFind &operator=(const EasyFind &copy);
+class FindError : public std::exception{
     public:
-        static void easyfind(T container, int i);
-    class FindError : public std::exception{
-        public:
-            const char* what() const throw();
-    };
+        const char* what() const throw(){
+            return "Error: not found";
+        }
 };
 
-#include "easyfind.tpp"
+template <typename T>
+void easyfind(T container, int i){
+   for (typename T::iterator it = container.begin(); it != container.end(); ++it){
+      if (*it == i){
+         std::cout << "find: " << *it << std::endl;
+         return ;
+      }
+   }
+   throw FindError();
+}
 
 #endif

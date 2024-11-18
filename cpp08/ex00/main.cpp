@@ -12,16 +12,16 @@ int main(void){
     }
 
     try{
-        EasyFind<std::vector<int> >::easyfind(i_vec, 1);
-        EasyFind<std::vector<int> >::easyfind(i_vec, 11);
+        easyfind(i_vec, 1);
+        easyfind(i_vec, 11);
     }
     catch (std::exception &e){
         std::cerr << e.what() << std::endl;
     }
 
     try{
-        EasyFind<std::vector<int> >::easyfind(i_vec, 2);
-        EasyFind<std::vector<int> >::easyfind(i_vec, 22);
+        easyfind(i_vec, 2);
+        easyfind(i_vec, 22);
     }
     catch (std::exception &e){
         std::cerr << e.what() << std::endl;

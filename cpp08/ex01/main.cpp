@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <ctime>
 
 int main() 
 {
@@ -54,5 +55,21 @@ int main()
     std::cout << sp4.shortestSpan() << std::endl; 
     std::cout << sp4.longestSpan() << std::endl;
     
-    return 0; 
+    Span sp5(10);
+    std::vector<unsigned int> random_number(11);
+    std::vector<unsigned int>::iterator it;
+    for (it = random_number.begin(); it != random_number.end(); it++){
+        *it = rand() % sp5.getN();
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+    try{
+        sp5.addNumber(random_number.begin(), random_number.end());
+    }
+    catch (std::exception &e){
+        std::cerr << e.what() << std::endl;
+    }
+    std::cout << sp5.shortestSpan() << std::endl; 
+    std::cout << sp5.longestSpan() << std::endl;
+    return 0;
 }

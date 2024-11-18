@@ -1,9 +1,23 @@
 #include "Span.hpp"
 
-Span::Span() : _N(0){
-}
+Span::Span() : _N(0) {}
 
-Span::Span(unsigned int N) : _N(N){
+Span::Span(unsigned int N) : _N(N) {}
+
+Span::~Span() {}
+
+Span::Span(const Span &copy) : _N(copy._N), vec(copy.vec) {}
+
+Span& Span::operator=(const Span &copy){
+    if (this != &copy){
+        _N = copy._N;
+        vec = copy.vec;
+    }
+    return *this;
+} 
+
+unsigned int Span::getN(){
+    return _N;
 }
 
 void Span::addNumber(unsigned int num){
@@ -12,11 +26,18 @@ void Span::addNumber(unsigned int num){
     vec.push_back(num);
 }
 
+void Span::addNumber(std::vector<unsigned int>::iterator begin, std::vector<unsigned int>::iterator end){
+    while (begin != end){
+        addNumber(*begin);
+        begin++;
+    }
+}
+
 void    Span::addManyNumbers(unsigned int num){
     if (vec.size() + num > _N)
         throw OutOfIndex();
     for (unsigned int i = 0; i < num; i++){
-        vec.push_back(rand() % num);
+        vec.push_back(rand() % _N);
     }
 }
 

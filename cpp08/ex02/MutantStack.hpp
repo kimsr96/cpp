@@ -8,23 +8,18 @@
 template <typename T>
 class MutantStack : public std::stack<T, std::deque<T> >{
     public:
-        typedef typename std::deque<T>::iterator        iterator;
-        typedef typename std::deque<T>::const_iterator  const_iterator;
+        typedef typename std::deque<T>::iterator          iterator;
+        typedef typename std::deque<T>::reverse_iterator  r_iterator;
         MutantStack();
         ~MutantStack();
         MutantStack(const MutantStack &copy);
-        MutantStack &operator = (const MutantStack &copy);
+        MutantStack &operator=(const MutantStack &copy);
 
         iterator begin();
-        const_iterator cbegin();
-        iterator rbegin();
-        const_iterator crbegin();
+        r_iterator rbegin();
 
         iterator end();
-        const_iterator cend();
-        iterator rend();
-        const_iterator crend();
-
+        r_iterator rend();
 };
 
 #include "MutantStack.tpp"
