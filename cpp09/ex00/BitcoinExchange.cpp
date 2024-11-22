@@ -19,11 +19,14 @@ bool isLeapYear(int year){
     return (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
 }
 
-bool is_valid_input(std::string line){
-    int year;
-    int month;
-    int day;
+bool validInput(std::string line, size_t pos){
+    int             year;
+    int             month;
+    int             day;
+    float           value;
 
+    if (pos == std::string::npos)
+        return false;
     year = std::atoi(line.substr(0, 4).c_str());
     month = std::atoi(line.substr(5, 2).c_str());
     day = std::atoi(line.substr(8, 2).c_str());
@@ -31,87 +34,69 @@ bool is_valid_input(std::string line){
         return false;
     if ((isLeapYear(year) && month == 2 && day > 29) || (!isLeapYear(year) && month == 2 && day > 28))
         return false;
-    if (line[4] != '-' || line[7] != '-' || line.substr(10, 3) != " | "){
-        std::cerr << "Error" << std::endl;
+    if (line[4] != '-' || line[7] != '-'){
         return false;
     }
+    if (line.substr(13).empty()){
+        return false;
+    }
+    value = std::atof(line.substr(13).c_str());
+    if (value == 0 && line.substr(13).length() != 0)
+        return false;
     return true;
 }
 
-void BitcoinExchange::validInputData(char *fileName){
-    float           value;
+void    BitcoinExchange::exchanger(char *fileName){
+    double          value;
     std::string     line;
-    std::string     date;
-    std::string     dataLine;
 
     std::ifstream   input(fileName);
-    std::ifstream   data("./data.csv");
-    if (!input || !data){
+    if (!input){
         std::cerr << "Failed to open file." << std::endl;
-        return ;
     }
     std::getline(input, line);
-    std::getline(data, dataLine);
-    if (line != "date | value" || dataLine != "date,exchange_rate"){
+    if (line != "date | value")
         std::cerr << "First line error" << std::endl; 
-    }
-    while (getline(input, line)){
-        if (!is_valid_input(line)){
-            size_t pos = line.find(" | ");
-            if (pos == std::string::npos){
-                std::cerr << "Error: can not find delimeter" << std::endl; 
-            }
+    while (std::getline(input, line)){
+        size_t pos = line.find(" | ");
+        if (!validInput(line, pos)){
             std::cerr << "Error: bad input => " << line.substr(0, pos) << std::endl;
         }
-        std::stringstream ss(line.substr(13));
-        date = line.substr(0, 9);
-        ss >> value;
-        _map[date] = value;
-        //if (!(ss >> value)){
-        //    std::cerr << "Error: Value error" << std::endl;
-        //}
-
-    }
-    input.close();
-    data.close();
-}
-
-void    BitcoinExchange::exchanger(){
-    std::string     dataDate;
-    std::string     dataLine;
-    float           beforeRate;
-    float           rate;
-    char*           end;
-
-    beforeRate = 0;
-    std::ifstream   data("./data.csv");
-    getline(data, dataLine);
-    for (std::map<std::string, float>::iterator it = _map.begin(); it != _map.end(); ++it){
-        if (it->second < 0){
-            std::cerr << "Error: not a positive value." << std::endl; 
-        }
-        else if (it->second > 1000){
-            std::cerr << "Error: too large value." << std::endl;
-        }
         else{
-            while (getline(data, dataLine)){
-                dataDate = dataLine.substr(0, 9);
-                rate = std::strtof(dataLine.substr(10).c_str(), &end);
-                if (*end == '\0')
-                {
-                    std::cerr << "Error" << std::endl;
-                    continue;
+            value = std::atof(line.substr(13).c_str());
+            if (value < 0){
+                std::cerr << "Error: not a positive number." << std::endl;
+            }
+            else if (value > 1000)
+                std::cerr << "Error: too large a number." << std::endl;
+            else{
+                std::map<std::string, float>::iterator it = _map.upper_bound(line.substr(0, 10));
+                if (it == _map.begin()){
+                    std::cout << "No element not possible" << std::endl;
                 }
-                if (it->first == dataDate){
-                    std::cout << it->first << " => " << it->second << " = " << it->second * rate << std::endl; 
-                    break;
+                else{
+                    --it;
+                    std::cout << line.substr(0, 10) << " => " << line.substr(13) << " = " << value * it->second << std::endl;  
                 }
-                if (it->first > dataDate){
-                    std::cout << it->first << " => " << it->second << " = " << it->second * beforeRate << std::endl; 
-                    break;
-                }
-                beforeRate = rate;
             }
         }
-    } 
+    }
+    input.close();
+}
+
+void    BitcoinExchange::saveData(){
+    char            *end;
+    float           rate;
+    std::string     dataLine;
+
+    std::ifstream   data("./data.csv");
+    getline(data, dataLine);
+    if (dataLine != "date,exchange_rate")
+        std::cerr << "Error: first line" << std::endl;
+    while (getline(data, dataLine)){
+        rate = std::strtof(dataLine.substr(11).c_str(), &end);
+        _map[dataLine.substr(0, 10)] = rate;
+    }
+    data.close();
+    return ;
 }

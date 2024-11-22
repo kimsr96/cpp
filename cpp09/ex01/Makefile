@@ -1,10 +1,10 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp BitcoinExchange.cpp
-INCS = BitcoinExchange.hpp
+SRCS = main.cpp RPN.cpp
+INCS = RPN.hpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
-NAME = btc
+NAME = RPN
 
 all : $(NAME)
 

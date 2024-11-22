@@ -7,6 +7,7 @@
 #include <limits.h>
 #include <map>
 #include <cstdlib>
+#include <algorithm>
 
 class BitcoinExchange{
     private:
@@ -17,7 +18,8 @@ class BitcoinExchange{
         BitcoinExchange(BitcoinExchange const &copy);
         BitcoinExchange &operator=(BitcoinExchange const &copy);
         void    validInputData(char *fileName);
-        void    exchanger();
+        void    exchanger(char *fileName);
+        void    saveData();
 };
 
 #endif
