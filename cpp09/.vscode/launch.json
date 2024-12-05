@@ -7,7 +7,9 @@
       "request": "launch",
       "args": [],
       "cwd": "/Users/seungryk/Desktop/cpp/cpp09/ex00",
-      "program": "/Users/seungryk/Desktop/cpp/cpp09/ex00/build/Debug/outDebug"
+      "program": "/Users/seungryk/Desktop/cpp/cpp09/ex00/build/Debug/outDebug",
+      "console":"none",
+      "externalConsole": false
     }
   ]
 }
