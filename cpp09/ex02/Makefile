@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp PmergeMe.cpp
 INCS = PmergeMe.hpp
 OBJ_DIR = obj

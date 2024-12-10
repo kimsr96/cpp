@@ -28,22 +28,22 @@ int main(int argc, char **argv){
     std::cout << "Before: ";
     vec.printVector();
 
-    //clock_t start = clock();
-    //vec.mergeInsert(argc, 1);
-    //clock_t end = clock();
+    clock_t start = clock();
+    vec.mergeInsert(argc, 1);
+    clock_t end = clock();
 
     std::cout << "After: ";
-    //vec.printVector();
+    vec.printVector();
 
-    //double timer = double(end - start) / CLOCKS_PER_SEC;
-    //std::cout << std::fixed << std::setprecision(5);
-    //std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << timer << " us" << std::endl;    
-    clock_t start = clock();
-    list.mergeInsertList(argc, 1);
-    clock_t end = clock();
     double timer = double(end - start) / CLOCKS_PER_SEC;
+    std::cout << std::fixed << std::setprecision(5);
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << timer << " us" << std::endl;
 
-    list.printList();
+    start = clock();
+    list.mergeInsertList(argc, 1);
+    end = clock();
+    timer = double(end - start) / CLOCKS_PER_SEC;
+
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::list : " << timer << " us" << std::endl;    
 

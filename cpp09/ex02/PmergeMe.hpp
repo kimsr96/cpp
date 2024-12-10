@@ -23,7 +23,8 @@ class PmergeMe{
 
         void    generateJacobsthal(size_t n);
         //int     binarySearch(std::vector<int> &arr, size_t find, int target, int cnt);
-        std::list<int>::iterator  binarySearch(std::list<int> &arr, int find, int target);
+        //std::list<int>::iterator  binarySearch(std::list<int> &arr, int find, int target);
+        int     binarySearch(std::list<int> &arr, int find, int target);
         
         void    printVector();
         void    printList();
