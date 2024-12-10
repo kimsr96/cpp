@@ -6,12 +6,12 @@
 #include <list>
 #include <algorithm>
 
+
 class PmergeMe{
     private:
         std::vector<int>    _vec;
         std::list<int>      _list;
         size_t              _size;
-        int                 _cmp;
         int                 *_jacob;
  
     public:
@@ -22,8 +22,8 @@ class PmergeMe{
         int     Jacobsthal(int n);
 
         void    generateJacobsthal(size_t n);
-        int     binarySearch(std::vector<int> &arr, size_t find, int target, int cnt);
-        int     binarySearch(std::list<int> &arr, int find, int target, int cnt);
+        //int     binarySearch(std::vector<int> &arr, size_t find, int target, int cnt);
+        std::list<int>::iterator  binarySearch(std::list<int> &arr, int find, int target);
         
         void    printVector();
         void    printList();
@@ -33,5 +33,6 @@ class PmergeMe{
         void    insertList(size_t cnt);
         void    mergeInsert(int argc, size_t cnt);
         void    mergeInsertList(int argc, size_t cnt);
+        
 };
 #endif
